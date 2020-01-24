@@ -15,12 +15,12 @@ jobs:
     - name: Install pyenv
       run: |
         git clone https://github.com/pyenv/pyenv.git ~/.pyenv
-    - name: Cache Python
+    - name: Load Cached pyenv Python ${{ matrix.python-version }}
       uses: actions/cache@v1
       with:
         path: ~/.pyenv/versions/${{ matrix.python-version }}/
         key: ${{ runner.os }}-python-${{ matrix.python-version }}
-    - name: Install Python ${{ matrix.python-version }}
+    - name: Set Up Python ${{ matrix.python-version }}
       run: |
         export PYENV_ROOT="$HOME/.pyenv"
         export PATH="$PYENV_ROOT/bin:$PATH"
