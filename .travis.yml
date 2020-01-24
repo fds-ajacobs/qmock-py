@@ -12,4 +12,6 @@ python:
 # manage python versions outside of tox. ie: travis is doing the same thing as
 # our local test_all_envs.sh.
 install: pip install tox
-script: tox
+script: |
+    echo $TEST_VAR
+    tox
