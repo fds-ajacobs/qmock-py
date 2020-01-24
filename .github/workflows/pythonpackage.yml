@@ -20,8 +20,8 @@ jobs:
     - name: Cache Python
       uses: actions/cache@v1
       with:
-        path: ~/.pyenv/versions/
-        key: ${{ runner.os }}-python
+        path: ~/.pyenv/versions/{{ matrix.python-version }}/
+        key: ${{ runner.os }}-python-{{ matrix.python-version }}
     - name: Install Python ${{ matrix.python-version }}
       run: |
         export PYENV_ROOT="$HOME/.pyenv"
