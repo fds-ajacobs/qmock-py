@@ -14,11 +14,9 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v1
-    - name: Set up pyenv
+    - name: Install pyenv
       run: |
         git clone https://github.com/pyenv/pyenv.git ~/.pyenv
-        export PYENV_ROOT="$HOME/.pyenv"
-        export PATH="$PYENV_ROOT/bin:$PATH"
     - name: Cache Python
       uses: actions/cache@v1
       with:
@@ -26,6 +24,8 @@ jobs:
         key: ${{ runner.os }}-python
     - name: Install Python ${{ matrix.python-version }}
       run: |
+        export PYENV_ROOT="$HOME/.pyenv"
+        export PATH="$PYENV_ROOT/bin:$PATH"
         pyenv install ${{ matrix.python-version }} --skip-existing
         pyenv global ${{ matrix.python-version }}
     - name: Install dependencies
