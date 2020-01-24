@@ -13,5 +13,6 @@ python:
 # our local test_all_envs.sh.
 install: pip install tox
 script: |
-    echo $TEST_VAR
+    X="abc'${TEST_VAR}'xyz";
+    echo "${X}"
     tox
